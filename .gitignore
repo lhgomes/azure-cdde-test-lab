@@ -1,0 +1,10 @@
+.run/
+.env
+.azure/
+evidence/
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+*:Zone.Identifier
+*:sec.endpointdlp
