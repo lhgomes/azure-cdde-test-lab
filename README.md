@@ -6,6 +6,11 @@ validator, and optionally performs lifecycle, SKR denial and backup/restore
 testing. No configuration file, manually created VM, manually configured backup vault,
 or manually executed restore is required.
 
+For customers who prefer to execute and inspect each Azure CLI operation, use the
+[manual test suite](MANUAL-TEST-SUITE.md). It covers fresh provisioning,
+conformance, optional disruptive lifecycle/SKR-denial tests, and all four
+exploratory backup/restore paths without invoking the Python runner.
+
 ## Runtime files
 
 This folder contains the automated runner and an optional diagnostic collector:
@@ -16,14 +21,15 @@ This folder contains the automated runner and an optional diagnostic collector:
 | [cdde_validation.py](cdde_validation.py) | Python conformance, lifecycle, fail-closed and recovery validators |
 | [collect-cdde-logs.py](collect-cdde-logs.py) | Optional diagnostic log archive collection from existing VMs |
 | [DataDiskSKRPolicy.json](DataDiskSKRPolicy.json) | Secure Key Release policy required when creating the encryption key |
+| [MANUAL-TEST-SUITE.md](MANUAL-TEST-SUITE.md) | Customer-operated Azure CLI test cases, expected results, evidence and cleanup |
 | [README.md](README.md) | Run instructions and operational safeguards |
 
 Keep the Python files together. The controller invokes the validators
 using the same Python interpreter. No local Bash scripts are required.
 The runner generates JSON configuration profiles, request payloads and case
 manifests inside each evidence bundle.
-Manual setup/configuration examples and offline regression tests are not
-included in this repository.
+Manual setup/configuration examples are in the separate manual test suite.
+Offline regression tests are not included in this repository.
 
 The generated `evidence/` directory is local output, not an
 input required for a new deployment. It is required to inspect or resume a
